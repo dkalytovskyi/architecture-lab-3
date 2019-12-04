@@ -3,7 +3,7 @@ package main
 import (
     "fmt"
     "os"
-   "path/filepath"
+    "path/filepath"
     "io"
     "strings"
 )
@@ -13,20 +13,19 @@ func get_args() {
     fmt.Println(args)
 }
 
-func read_file(target string) ( []byte, int){
-    
+func read_file(target string) ( []byte, int) {
     file, err := os.Open(target)
     if err != nil{
-        fmt.Println(err) 
-        os.Exit(1) 
+        fmt.Println(err)
+        os.Exit(1)
     }
-    defer file.Close() 
+    defer file.Close()
     data := make([]byte, 64)
     var n_read int
-    for{
+    for {
         n, err := file.Read(data)
-        if err == io.EOF{  
-            break  
+        if err == io.EOF {
+            break
         }
         n_read = n
     }
@@ -39,24 +38,23 @@ func count_lines(data []byte, amount int) int {
             if b == '\n' {
                 i++
             }
-        }
-        i++
-        return i
+    }
+    i++
+    return i
 }
 
 func write_file(file_name string, target_dir string, data string) {
-
-    file_path := target_dir + "/" + file_name 
+    file_path := target_dir + "/" + file_name
     if _, err_existance := os.Stat(target_dir)
-    os.IsNotExist(err_existance){
+    os.IsNotExist(err_existance) {
         os.MkdirAll(target_dir, 0755)
     }
     file, err := os.Create(file_path)
-    if err != nil{
-        fmt.Println("Unable to create file:", err) 
-        os.Exit(1) 
+    if err != nil {
+        fmt.Println("Unable to create file:", err)
+        os.Exit(1)
     }
-    defer file.Close() 
+    defer file.Close()
     file.WriteString(data)
 }
 
@@ -72,7 +70,7 @@ func main() {
     args := os.Args[1:]
     input_dir := args[0]
     output_dir := args[1]
-   
+
    /* get list of files in dir */
     var files[] string
     root := input_dir
@@ -80,14 +78,14 @@ func main() {
         files = append(files, path)
         return nil
     })
-    
+
     if err != nil {
         panic(err)
     }
 
    /* iterate through files */
     for _, file := range files[1:] {
-
+      
         /* defining variables */
         data := make([]byte, 64)
         var amount int
