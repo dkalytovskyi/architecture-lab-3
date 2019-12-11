@@ -60,7 +60,7 @@ func count_lines(data []byte, amount int) int {
 
 func write_file(file_name string, target_dir string, data string) {
 
-    file_path := target_dir + "/" + file_name
+    file_path := target_dir + "\\" + file_name
     if _, err_existance := os.Stat(target_dir)
     os.IsNotExist(err_existance){
         os.MkdirAll(target_dir, 0755)
@@ -75,7 +75,7 @@ func write_file(file_name string, target_dir string, data string) {
 }
 
 func name_generator(file_path string, extension string) string {
-    string_arr := strings.Split(file_path, "/")
+    string_arr := strings.Split(file_path, "\\")
     file_name := strings.Split(string_arr[len(string_arr)-1], ".")
     full_file_name := file_name[0] + "."+ extension
     return full_file_name
