@@ -7,3 +7,5 @@
 
 Аналогічно на машині з Linux:
 ![alt text](https://github.com/dkalytovskyi/architecture-lab-3/blob/master/markdown-images/linux.png "Linux stats")
+
+Щоб визначити кількість файлів, які можуть оброблятись одночасно, потрібно поділити розмір оперативної пам'яті машини на розмір буфера, що виділяється для зчитування файлів.
